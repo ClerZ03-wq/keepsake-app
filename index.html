@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-accent="indigo" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,9 +22,9 @@
         <rect width="1024" height="1024" rx="230" fill="#FDF9F4"/>
         <g transform="translate(512 512) rotate(-4) translate(-512 -512)">
           <path d="M260 380c0-44 36-80 80-80h200c44 0 80 36 80 80v260c0 44-36 80-80 80H340c-44 0-80-36-80-80V380z" fill="#476555" transform="rotate(-8 440 510)"/>
-          <path d="M440 280c0-44 36-80 80-80h140c29 0 54 17 68 43l62 121c11 21 11 46 0 67l-50 97V660c0 44-36 80-80 80H520c-44 0-80-36-80-80V280z" fill="#465483" transform="rotate(6 600 470)"/>
+          <path class="logo-accent" d="M440 280c0-44 36-80 80-80h140c29 0 54 17 68 43l62 121c11 21 11 46 0 67l-50 97V660c0 44-36 80-80 80H520c-44 0-80-36-80-80V280z" transform="rotate(6 600 470)"/>
           <rect x="380" y="420" width="180" height="140" rx="24" fill="#FDF9F4" transform="rotate(-2 470 490)"/>
-          <circle cx="430" cy="460" r="16" fill="#465483" transform="rotate(-2 470 490)"/>
+          <circle class="logo-accent" cx="430" cy="460" r="16" transform="rotate(-2 470 490)"/>
         </g>
       </svg>
       Scraps
@@ -50,6 +50,23 @@
           <a class="btn btn-ghost" href="#rooms">See the four rooms</a>
         </div>
         <p class="fine">Dogs, cats, rabbits, birds, and whoever else shares the house.</p>
+        <div class="schemes">
+          <p class="scheme-label" id="scheme-label">Indigo · Light</p>
+          <div class="scheme-row" role="radiogroup" aria-label="Color scheme">
+            <button class="swatch" type="button" data-accent="pearl" style="--chip:#e8e0d8" aria-label="Pearl"></button>
+            <button class="swatch" type="button" data-accent="sage" style="--chip:#8fb8a2" aria-label="Sage"></button>
+            <button class="swatch" type="button" data-accent="blush" style="--chip:#e8a8a0" aria-label="Blush"></button>
+            <button class="swatch" type="button" data-accent="lavender" style="--chip:#b8a8d8" aria-label="Lavender"></button>
+            <button class="swatch" type="button" data-accent="sky" style="--chip:#9abcd8" aria-label="Sky"></button>
+            <button class="swatch" type="button" data-accent="peach" style="--chip:#e8c090" aria-label="Peach"></button>
+            <button class="swatch" type="button" data-accent="mint" style="--chip:#90c8b0" aria-label="Mint"></button>
+            <button class="swatch on" type="button" data-accent="indigo" style="--chip:#8090c0" aria-label="Indigo"></button>
+          </div>
+          <div class="mode-row" role="radiogroup" aria-label="Appearance">
+            <button class="mode on" type="button" data-theme="light">Light</button>
+            <button class="mode" type="button" data-theme="dark">Dark</button>
+          </div>
+        </div>
       </div>
 
       <div class="stage" aria-hidden="true">
@@ -59,13 +76,14 @@
           <figcaption>morning zoomies</figcaption>
         </figure>
         <div class="phone">
+          <div class="shutter" id="shutter"></div>
           <div class="phone-screen">
             <p class="date-line">Friday, September 25</p>
             <div class="hello">
               <div>
-                <p class="greet">Still waiting,</p>
+                <p class="greet" id="greet">Still waiting,</p>
                 <p class="name-row">
-                  <span class="pet-name">Iban.</span>
+                  <span class="pet-name" id="pet-title">Iban.</span>
                   <svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#c4b49a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2l5 5-5 5"/></svg>
                 </p>
               </div>
@@ -77,67 +95,70 @@
               </div>
             </div>
             <div class="avatars">
-              <div class="pet on">
+              <button class="pet on" type="button" data-pet="Iban" data-photo="assets/images/landing/dog-portrait.jpg" data-quest="A close-up of Iban's paws">
                 <div class="pet-face"><img src="assets/images/landing/dog-portrait.jpg" alt="" /></div>
                 Iban
-              </div>
-              <div class="pet">
+              </button>
+              <button class="pet" type="button" data-pet="Beshie" data-photo="assets/images/landing/bunny.jpg" data-quest="Snap Beshie in a sunbeam">
                 <div class="pet-face">
                   <img src="assets/images/landing/bunny.jpg" alt="" />
                   <span class="snap-dot"></span>
                 </div>
                 Beshie
-              </div>
+              </button>
               <div class="pet">
                 <div class="add-ring">+</div>
                 Add
               </div>
             </div>
-            <figure class="polaroid">
+            <figure class="polaroid" id="polaroid">
               <div class="empty-well">
-                <div class="cam-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3f4d78" stroke-width="1.8" stroke-linecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.2"/></svg>
+                <div class="well-empty">
+                  <div class="cam-circle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.2"/></svg>
+                  </div>
+                  <strong id="snap-title">Snap Iban today</strong>
+                  <em>Keep your streak alive</em>
                 </div>
-                <strong>Snap Iban today</strong>
-                <em>Keep your streak alive</em>
+                <img class="well-photo" id="well-photo" alt="" />
               </div>
-              <figcaption>waiting for today's snap…</figcaption>
+              <figcaption id="snap-cap">waiting for today's snap…</figcaption>
             </figure>
-            <div class="snap-btn">
+            <button class="snap-btn" type="button" id="snap-btn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.2"/></svg>
-              Quick Snap
-            </div>
+              <span id="snap-label">Quick Snap</span>
+            </button>
             <p class="browse">Browse all snaps →</p>
             <div class="quest">
               <div class="quest-body">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#476555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
                 <div>
                   <small>Daily quest</small>
-                  <strong>A close-up of Iban's paws</strong>
+                  <strong id="quest-line">A close-up of Iban's paws</strong>
                 </div>
               </div>
               <div class="quest-foot">
                 <span>+50 XP · resets at midnight</span>
-                <span class="active-pill">Active</span>
+                <span class="active-pill" id="quest-state">Active</span>
               </div>
             </div>
             <div class="tabs">
-              <b>
+              <button class="tab on" type="button" data-tab="today">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
                 TODAY
-              </b>
-              <span>
+              </button>
+              <button class="tab" type="button" data-tab="archive">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 ARCHIVE
-              </span>
-              <span>
+              </button>
+              <button class="tab" type="button" data-tab="pets">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="8" r="2"/><circle cx="6" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/><circle cx="8.5" cy="14.5" r="1.5"/><circle cx="13.5" cy="14.5" r="1.5"/></svg>
                 PETS
-              </span>
-              <span>
+              </button>
+              <button class="tab" type="button" data-tab="profile">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.5-3 4-4.5 7-4.5s5.5 1.5 7 4.5"/></svg>
                 PROFILE
-              </span>
+              </button>
             </div>
           </div>
         </div>
@@ -154,23 +175,24 @@
         <h2 class="section-title">Three small habits.</h2>
         <p class="section-copy">Snap. Style it. Look back. That is the whole journal.</p>
         <div class="steps">
-          <article class="step">
+          <article class="step reveal" style="--i:0">
             <em>01</em>
             <h3>Capture</h3>
             <p>Quick Snap opens the camera inside Scraps. One photo of today — quiet, a little crooked, theirs.</p>
           </article>
-          <article class="step">
+          <article class="step reveal" style="--i:1">
             <em>02</em>
             <h3>Scrap it</h3>
             <p>Pick a frame, write the caption in your own hand, add a sticker if the day calls for one, and pin the place.</p>
-            <div class="frames">
-              <div class="frame classic"><i style="background-image:url('assets/images/landing/dog-park.jpg')"></i><span>Classic</span></div>
-              <div class="frame warm"><i style="background-image:url('assets/images/landing/cat-sun.jpg')"></i><span>Warm</span></div>
-              <div class="frame cool"><i style="background-image:url('assets/images/landing/cat-window.jpg')"></i><span>Cool</span></div>
-              <div class="frame garden"><i style="background-image:url('assets/images/landing/bunny.jpg')"></i><span>Garden</span></div>
+            <div class="frames" id="frames">
+              <button class="frame classic on" type="button" data-frame="Classic"><i style="background-image:url('assets/images/landing/dog-park.jpg')"></i><span>Classic</span></button>
+              <button class="frame warm" type="button" data-frame="Warm"><i style="background-image:url('assets/images/landing/cat-sun.jpg')"></i><span>Warm</span></button>
+              <button class="frame cool" type="button" data-frame="Cool"><i style="background-image:url('assets/images/landing/cat-window.jpg')"></i><span>Cool</span></button>
+              <button class="frame garden" type="button" data-frame="Garden"><i style="background-image:url('assets/images/landing/bunny.jpg')"></i><span>Garden</span></button>
             </div>
+            <p class="fine" id="frame-note">Classic border, a little crooked.</p>
           </article>
-          <article class="step">
+          <article class="step reveal" style="--i:2">
             <em>03</em>
             <h3>Look back</h3>
             <p>Archive keeps the calendar and the map. A month of scraps becomes a life you can reopen.</p>
@@ -184,25 +206,36 @@
         <p class="kicker">Four rooms</p>
         <h2 class="section-title">The journal has a floor plan.</h2>
         <div class="room-grid">
-          <div class="room-list">
-            <article class="room">
+          <div class="room-list" id="rooms-list">
+            <button class="room on reveal" type="button" data-room="today" style="--i:0">
               <h3>Today</h3>
               <p>Each morning opens on your pet. The polaroid in the middle is waiting, and a daily quest sits underneath it.</p>
-            </article>
-            <article class="room">
+            </button>
+            <button class="room reveal" type="button" data-room="archive" style="--i:1">
               <h3>Archive</h3>
               <p>Every snap lands on its day. Switch to the map when you want the park, the window, the walk home.</p>
-            </article>
-            <article class="room">
+            </button>
+            <button class="room reveal" type="button" data-room="pets" style="--i:2">
               <h3>Pets</h3>
               <p>Each companion gets a scrapbook, a streak, and a name written the way you say it.</p>
-            </article>
-            <article class="room">
+            </button>
+            <button class="room reveal" type="button" data-room="profile" style="--i:3">
               <h3>Profile</h3>
               <p>Streaks, ranks from Newcomer to Keeper, and badges like Night Owl, Storyteller, and Devoted.</p>
-            </article>
+            </button>
           </div>
           <aside class="board">
+            <div class="panel on" data-panel="today">
+              <div class="board-head"><h3>Today</h3><span id="board-pet">Iban</span></div>
+              <div class="today-demo">
+                <div class="mini-shot" id="mini-shot"></div>
+                <div>
+                  <p class="pet-name" id="board-name" style="font-size:36px">Iban.</p>
+                  <p class="section-copy" id="board-quest" style="margin:6px 0 0">A close-up of Iban's paws</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel" data-panel="archive">
             <div class="board-head">
               <h3>September</h3>
               <span>18 scraps</span>
@@ -233,6 +266,17 @@
               <span class="pin">The park</span>
               <span class="pin">Window seat</span>
             </div>
+            </div>
+            <div class="panel" data-panel="pets">
+              <div class="board-head"><h3>Pets</h3><span>2 companions</span></div>
+              <div class="pet-row"><img src="assets/images/landing/dog-portrait.jpg" alt="" /><div><strong>Iban</strong><p class="fine">Still waiting on today's snap</p></div></div>
+              <div class="pet-row"><img src="assets/images/landing/bunny.jpg" alt="" /><div><strong>Beshie</strong><p class="fine">Snapped · green dot means today is done</p></div></div>
+            </div>
+            <div class="panel" data-panel="profile">
+              <div class="board-head"><h3>Profile</h3><span>Bronze Whisker</span></div>
+              <div class="rank"><span class="fine" style="margin:0">420 XP</span><div class="rank-track"><i></i></div><span class="fine" style="margin:0">Keeper</span></div>
+              <div class="badges"><span class="badge">Night Owl</span><span class="badge">Storyteller</span><span class="badge">Early Bird</span></div>
+            </div>
           </aside>
         </div>
       </div>
@@ -246,7 +290,7 @@
           <p class="section-copy">The daily scrapbook is free to start. Keeper Plus keeps the journal open after a seven-day trial — unlimited snaps, the warmer frames, and a streak you can rescue.</p>
           <p class="fine">Skip whenever you like. The daily journal stays on your phone.</p>
         </div>
-        <aside class="plus-card">
+        <aside class="plus-card reveal" style="--i:1">
           <div>
             <p class="kicker">After the trial</p>
             <p class="price">$3.99 <span>/ month</span></p>
@@ -284,5 +328,6 @@
       <span>© 2026</span>
     </nav>
   </footer>
+  <script src="site.js"></script>
 </body>
 </html>
