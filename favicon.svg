@@ -2,8 +2,8 @@
   <rect width="1024" height="1024" rx="230" fill="#FDF9F4"/>
   <g transform="translate(512 512) rotate(-4) translate(-512 -512)">
     <path d="M260 380c0-44 36-80 80-80h200c44 0 80 36 80 80v260c0 44-36 80-80 80H340c-44 0-80-36-80-80V380z" fill="#476555" transform="rotate(-8 440 510)"/>
-    <path d="M440 280c0-44 36-80 80-80h140c29 0 54 17 68 43l62 121c11 21 11 46 0 67l-50 97V660c0 44-36 80-80 80H520c-44 0-80-36-80-80V280z" fill="#9e3d24" transform="rotate(6 600 470)"/>
+    <path d="M440 280c0-44 36-80 80-80h140c29 0 54 17 68 43l62 121c11 21 11 46 0 67l-50 97V660c0 44-36 80-80 80H520c-44 0-80-36-80-80V280z" fill="#465483" transform="rotate(6 600 470)"/>
     <rect x="380" y="420" width="180" height="140" rx="24" fill="#FDF9F4" transform="rotate(-2 470 490)"/>
-    <circle cx="430" cy="460" r="16" fill="#9e3d24" transform="rotate(-2 470 490)"/>
+    <circle cx="430" cy="460" r="16" fill="#465483" transform="rotate(-2 470 490)"/>
   </g>
 </svg>
