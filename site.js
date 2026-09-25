@@ -11,7 +11,8 @@ function paint(accent, theme, animate) {
   if (theme !== 'dark') theme = 'light'
   root.dataset.accent = accent
   root.dataset.theme = theme
-  if (label) label.textContent = `${titleCase(accent)} · ${titleCase(theme)}`
+  const paper = theme === 'dark' ? 'dark paper' : 'light paper'
+  if (label) label.textContent = `${titleCase(accent)} cover, ${paper}`
   document.querySelectorAll('.swatch').forEach(btn => {
     btn.classList.toggle('on', btn.dataset.accent === accent)
   })
@@ -119,11 +120,39 @@ document.querySelectorAll('.tabs .tab').forEach(btn => {
   })
 })
 
+const FRAME_NOTES = {
+  Classic: 'the usual white border',
+  Warm: 'for the late light',
+  Cool: 'window days',
+  Garden: 'when they were outside',
+}
+
+function say(el, text) {
+  if (!el) return
+  el.textContent = text
+  el.classList.remove('tick')
+  void el.offsetWidth
+  el.classList.add('tick')
+}
+
 document.querySelectorAll('#frames .frame').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#frames .frame').forEach(frame => frame.classList.toggle('on', frame === btn))
-    const note = document.getElementById('frame-note')
-    if (note) note.textContent = `${btn.dataset.frame} border, a little crooked.`
+    say(document.getElementById('frame-note'), FRAME_NOTES[btn.dataset.frame] || btn.dataset.frame)
+  })
+})
+
+document.querySelectorAll('.scrap').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.scrap').forEach(el => el.classList.toggle('on', el === btn))
+    say(document.getElementById('scrap-line'), btn.dataset.line)
+  })
+})
+
+document.querySelectorAll('.day.shot').forEach(day => {
+  day.addEventListener('click', () => {
+    document.querySelectorAll('.day.shot').forEach(el => el.classList.toggle('picked', el === day))
+    say(document.getElementById('day-note'), day.dataset.note)
   })
 })
 
