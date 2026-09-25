@@ -31,8 +31,9 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#journal">Today</a>
-      <a href="#ritual">The book</a>
-      <a href="#rooms">Pages</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#features">Features</a>
       <a href="#keeper">Keeper</a>
       <a href="privacy.html">Privacy</a>
       <a class="nav-app" href="#download">Get the app</a>
@@ -45,6 +46,11 @@
         <p class="dateline">September 25</p>
         <h1>One polaroid<br>a day.</h1>
         <p class="lede">Iban is still waiting on a photo of his paws. Beshie already got the sunbeam. You write the caption, and that day stays in the book.</p>
+        <ul class="facts">
+          <li><span>Today</span> Opens on their name. The polaroid in the middle is empty until you take it.</li>
+          <li><span>Quest</span> One small ask. Iban’s paws, or Beshie in a sunbeam. Worth 50 XP.</li>
+          <li><span>After</span> Archive keeps the day. Pets keeps the book. Photos stay on the phone.</li>
+        </ul>
         <p class="scribble">photos stay on the phone</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#download">Start a scrapbook</a>
@@ -75,6 +81,7 @@
           <img src="assets/images/landing/dog-morning.jpg" alt="" />
           <figcaption>morning zoomies</figcaption>
         </figure>
+        <div class="phone-col">
         <div class="phone">
           <div class="shutter" id="shutter"></div>
           <div class="phone-screen">
@@ -87,12 +94,12 @@
                   <svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#c4b49a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2l5 5-5 5"/></svg>
                 </p>
               </div>
-              <div class="gear" aria-hidden="true">
+              <button class="gear" type="button" id="gear" aria-label="Switch light or dark paper">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="3"/>
                   <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
                 </svg>
-              </div>
+              </button>
             </div>
             <div class="avatars">
               <button class="pet on" type="button" data-pet="Iban" data-photo="assets/images/landing/dog-portrait.jpg" data-quest="A close-up of Iban's paws">
@@ -106,10 +113,10 @@
                 </div>
                 Beshie
               </button>
-              <div class="pet">
+              <button class="pet" type="button" id="add-pet">
                 <div class="add-ring">+</div>
                 Add
-              </div>
+              </button>
             </div>
             <figure class="polaroid" id="polaroid">
               <div class="empty-well">
@@ -162,6 +169,8 @@
             </div>
           </div>
         </div>
+        <p class="try-hint">Click a pet, or Add. Then Quick Snap. The gear flips the paper.</p>
+        </div>
         <figure class="float float-b">
           <img src="assets/images/landing/bunny.jpg" alt="" />
           <figcaption>odd stare</figcaption>
@@ -169,59 +178,57 @@
       </div>
     </section>
 
-    <section class="spread" id="ritual">
+    <section class="ritual" id="ritual">
       <div class="wrap">
-        <div class="spread-top">
-          <div>
-            <p class="scribble flat">how a day goes</p>
-            <h2>Take it while they’re still in the room.</h2>
-            <p class="prose">The camera opens inside Scraps. You pick a border, write what you actually remember, and the photo lands on that date. Later you can find the park, the window, the walk home.</p>
-          </div>
-          <div class="borders">
-            <p class="label">Borders</p>
-            <div class="frames" id="frames">
-              <button class="frame classic on" type="button" data-frame="Classic"><i style="background-image:url('assets/images/landing/dog-park.jpg')"></i><span>Classic</span></button>
-              <button class="frame warm" type="button" data-frame="Warm"><i style="background-image:url('assets/images/landing/cat-sun.jpg')"></i><span>Warm</span></button>
-              <button class="frame cool" type="button" data-frame="Cool"><i style="background-image:url('assets/images/landing/cat-window.jpg')"></i><span>Cool</span></button>
-              <button class="frame garden" type="button" data-frame="Garden"><i style="background-image:url('assets/images/landing/bunny.jpg')"></i><span>Garden</span></button>
+        <p class="scribble flat">the ritual</p>
+        <h2>Three moves, then the day is in.</h2>
+        <div class="steps">
+          <article class="step">
+            <div class="step-visual capture-visual">
+              <figure class="shot-in">
+                <img src="assets/images/landing/dog-morning.jpg" alt="" />
+                <figcaption>click</figcaption>
+              </figure>
             </div>
-            <p class="scribble flat" id="frame-note">the usual white border</p>
-          </div>
+            <em>01</em>
+            <h3>Capture</h3>
+            <p>Quick Snap opens the camera inside Scraps. One photo of whoever is actually in the room.</p>
+          </article>
+          <article class="step">
+            <div class="step-visual">
+              <div class="frames" id="frames">
+                <button class="frame classic on" type="button" data-frame="Classic"><i style="background-image:url('assets/images/landing/dog-park.jpg')"></i><span>Classic</span></button>
+                <button class="frame warm" type="button" data-frame="Warm"><i style="background-image:url('assets/images/landing/cat-sun.jpg')"></i><span>Warm</span></button>
+                <button class="frame cool" type="button" data-frame="Cool"><i style="background-image:url('assets/images/landing/cat-window.jpg')"></i><span>Cool</span></button>
+                <button class="frame garden" type="button" data-frame="Garden"><i style="background-image:url('assets/images/landing/bunny.jpg')"></i><span>Garden</span></button>
+              </div>
+              <p class="scribble flat" id="frame-note">the usual white border</p>
+            </div>
+            <em>02</em>
+            <h3>Scrap it</h3>
+            <p>Pick a border, write the caption in your own hand, and add a sticker if the day calls for one.</p>
+          </article>
+          <article class="step">
+            <div class="step-visual look-visual" aria-hidden="true">
+              <div class="mini-cal">
+                <span></span><span class="fill"></span><span class="fill"></span><span></span>
+                <span class="fill"></span><span></span><span class="fill"></span><span class="fill"></span>
+              </div>
+            </div>
+            <em>03</em>
+            <h3>Look back</h3>
+            <p>The photo lands on that date. The month fills in, and the map still knows the park.</p>
+          </article>
         </div>
-        <div class="scrap-row" id="scraps">
-          <button class="scrap on" type="button" style="--tilt:-7deg; --drop:6px" data-line="Sept 2 — morning zoomies, before coffee.">
-            <img src="assets/images/landing/dog-morning.jpg" alt="A dog in the morning" />
-            <span>morning zoomies</span>
-          </button>
-          <button class="scrap" type="button" style="--tilt:4deg; --drop:18px" data-line="Sept 4 — asleep in the only sunny patch.">
-            <img src="assets/images/landing/cat-sun.jpg" alt="A cat in the sun" />
-            <span>the sunny patch</span>
-          </button>
-          <button class="scrap" type="button" style="--tilt:-2deg; --drop:0px" data-line="Sept 5 — Beshie, staring at nothing in particular.">
-            <img src="assets/images/landing/bunny.jpg" alt="A rabbit" />
-            <span>odd stare</span>
-          </button>
-          <button class="scrap" type="button" style="--tilt:6deg; --drop:14px" data-line="Sept 7 — the long way around the park.">
-            <img src="assets/images/landing/dog-park.jpg" alt="A dog at the park" />
-            <span>the long way</span>
-          </button>
-          <button class="scrap" type="button" style="--tilt:-5deg; --drop:8px" data-line="Sept 9 — posted up at the window again.">
-            <img src="assets/images/landing/cat-window.jpg" alt="A cat in a window" />
-            <span>window seat</span>
-          </button>
-          <button class="scrap" type="button" style="--tilt:2.5deg; --drop:20px" data-line="Sept 11 — Iban, unimpressed, as usual.">
-            <img src="assets/images/landing/dog-portrait.jpg" alt="A dog portrait" />
-            <span>unimpressed</span>
-          </button>
-        </div>
-        <p class="scrap-line" id="scrap-line">Sept 2 — morning zoomies, before coffee.</p>
       </div>
     </section>
 
-    <section class="rooms" id="rooms">
+    <section class="room-scroll" id="rooms">
+      <div class="room-sticky">
       <div class="wrap">
-        <p class="scribble flat">the app, basically</p>
-        <h2>Four pages. You already know them.</h2>
+        <p class="scribble flat">keep scrolling</p>
+        <h2>Four pages.</h2>
+        <p class="room-now" id="room-now">Today</p>
         <div class="room-grid">
           <div class="room-list" id="rooms-list">
             <button class="room on reveal" type="button" data-room="today" style="--i:0">
@@ -309,6 +316,89 @@
             </div>
           </aside>
         </div>
+        <div class="room-meter" aria-hidden="true">
+          <i class="on" data-room="today"></i>
+          <i data-room="archive"></i>
+          <i data-room="pets"></i>
+          <i data-room="profile"></i>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="showcase" id="features">
+      <div class="wrap">
+        <p class="showcase-label">Also in the journal</p>
+        <div class="bento">
+          <article class="tile photo snap">
+            <img src="assets/images/landing/dog-park.jpg" alt="" />
+            <div class="tile-copy"><h3>Quick Snap</h3><p>The camera opens in the app.</p></div>
+          </article>
+          <article class="tile quest-tile">
+            <p class="tile-kicker">Daily quest</p>
+            <h3>One ask. Then it’s tomorrow’s.</h3>
+            <p>+50 XP, gone at midnight.</p>
+          </article>
+          <article class="tile covers">
+            <p class="tile-kicker">Covers</p>
+            <h3>Eight of them.</h3>
+            <div class="chip-row" aria-hidden="true">
+              <i style="background:#e8e0d8"></i><i style="background:#8fb8a2"></i><i style="background:#e8a8a0"></i><i style="background:#b8a8d8"></i>
+              <i style="background:#9abcd8"></i><i style="background:#e8c090"></i><i style="background:#90c8b0"></i><i style="background:#8090c0"></i>
+            </div>
+          </article>
+          <article class="tile photo close">
+            <img src="assets/images/landing/cat-window.jpg" alt="" />
+            <div class="tile-copy"><h3>The close-up</h3><p>Paws, whiskers, the odd stare.</p></div>
+          </article>
+          <article class="tile streak-tile">
+            <p class="big">12</p>
+            <h3>Day streak</h3>
+            <p>If you show up.</p>
+          </article>
+          <article class="tile hand-tile">
+            <p class="tile-kicker">Caption</p>
+            <p class="hand-sample">morning zoomies</p>
+            <h3>In your handwriting.</h3>
+          </article>
+          <article class="tile sticker-tile">
+            <p class="sticker-cloud" aria-hidden="true">🌿 🌸 ⭐ 🐾 🌙 💛</p>
+            <h3>Stickers</h3>
+            <p>Film Roll, Sunrise, Map.</p>
+          </article>
+          <article class="tile book">
+            <p class="book-word">One<br>a day.</p>
+            <img src="assets/images/landing/dog-portrait.jpg" alt="" />
+          </article>
+          <article class="tile photo map-tile">
+            <img src="assets/images/landing/dog-morning.jpg" alt="" />
+            <div class="tile-copy"><h3>The map</h3><p>Home. The park. The window.</p></div>
+          </article>
+          <article class="tile">
+            <p class="tile-kicker">Private</p>
+            <h3>On the phone.</h3>
+            <p>No feed. The book stays with you.</p>
+          </article>
+          <article class="tile">
+            <p class="tile-kicker">Badges</p>
+            <h3>Night Owl. Storyteller. Devoted.</h3>
+            <p>You earn them. They aren’t handed out.</p>
+          </article>
+          <article class="tile frames-tile">
+            <p class="tile-kicker">Borders</p>
+            <div class="mini-frames" aria-hidden="true">
+              <i style="background-image:url('assets/images/landing/cat-sun.jpg')"></i>
+              <i style="background-image:url('assets/images/landing/cat-window.jpg')"></i>
+              <i style="background-image:url('assets/images/landing/bunny.jpg')"></i>
+            </div>
+            <h3>Warm, cool, garden.</h3>
+          </article>
+          <article class="tile ranks-tile">
+            <p class="tile-kicker">Rank</p>
+            <h3>Newcomer to Keeper.</h3>
+            <p>420 XP is still only Bronze Whisker.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -326,11 +416,15 @@
           </div>
           <p class="price">$3.99 <span>a month after</span></p>
           <ul class="receipt">
-            <li><span>Snaps</span><span>as many as you take</span></li>
-            <li><span>Streaks</span><span>and the daily quest</span></li>
+            <li><span>Pets</span><span>as many as live there</span></li>
+            <li><span>Snaps</span><span>unlimited, kept in the book</span></li>
+            <li><span>Quest</span><span>the daily ask, and the XP</span></li>
+            <li><span>Streaks</span><span>counted, and one you can rescue</span></li>
             <li><span>Borders</span><span>warm, cool, garden</span></li>
-            <li><span>Stickers</span><span>the extra packs</span></li>
-            <li><span>Rescue</span><span>one saved streak</span></li>
+            <li><span>Stickers</span><span>Film Roll, Sunrise, Map</span></li>
+            <li><span>Badges</span><span>Night Owl through Devoted</span></li>
+            <li><span>Export</span><span>a page, in HD</span></li>
+            <li><span>Reminder</span><span>if you want a nudge</span></li>
           </ul>
           <a class="btn btn-primary" href="#download">Try it for a week</a>
         </aside>

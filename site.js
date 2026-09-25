@@ -80,6 +80,22 @@ document.querySelectorAll('.avatars .pet[data-pet]').forEach(btn => {
   btn.addEventListener('click', () => showPet(btn))
 })
 
+document.getElementById('add-pet')?.addEventListener('click', () => {
+  const btn = document.getElementById('add-pet')
+  if (!btn.dataset.pet) {
+    btn.dataset.pet = 'Miso'
+    btn.dataset.photo = 'assets/images/landing/cat-window.jpg'
+    btn.dataset.quest = 'Snap Miso at the window'
+    btn.innerHTML = '<div class="pet-face"><img src="assets/images/landing/cat-window.jpg" alt=""></div>Miso'
+  }
+  showPet(btn)
+})
+
+document.getElementById('gear')?.addEventListener('click', () => {
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+  paint(root.dataset.accent || 'indigo', next, true)
+})
+
 document.getElementById('snap-btn')?.addEventListener('click', () => {
   if (!shutter || !polaroid || !wellPhoto) return
   shutter.classList.remove('go')
@@ -94,10 +110,20 @@ document.getElementById('snap-btn')?.addEventListener('click', () => {
   if (miniShot) miniShot.style.backgroundImage = `url('${current.photo}')`
 })
 
+const ROOM_ORDER = ['today', 'archive', 'pets', 'profile']
+const ROOM_LABELS = { today: 'Today', archive: 'Archive', pets: 'Pets', profile: 'Profile' }
+const roomScroll = document.getElementById('rooms')
+let roomLock = 0
+
 function openRoom(id) {
   document.querySelectorAll('#rooms-list .room').forEach(btn => {
     btn.classList.toggle('on', btn.dataset.room === id)
   })
+  document.querySelectorAll('.room-meter i').forEach(dot => {
+    dot.classList.toggle('on', dot.dataset.room === id)
+  })
+  const now = document.getElementById('room-now')
+  if (now) now.textContent = ROOM_LABELS[id] || id
   document.querySelectorAll('.panel').forEach(panel => {
     const on = panel.dataset.panel === id
     panel.classList.toggle('on', on)
@@ -109,9 +135,41 @@ function openRoom(id) {
   })
 }
 
+function scrollToRoom(id) {
+  if (!roomScroll) return
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduce) {
+    openRoom(id)
+    return
+  }
+  const index = Math.max(0, ROOM_ORDER.indexOf(id))
+  const start = roomScroll.offsetTop
+  const span = roomScroll.offsetHeight - window.innerHeight
+  const y = start + ((index + 0.12) / ROOM_ORDER.length) * span
+  roomLock = performance.now() + 900
+  openRoom(id)
+  window.scrollTo({ top: y, behavior: 'smooth' })
+}
+
 document.querySelectorAll('#rooms-list .room').forEach(btn => {
-  btn.addEventListener('click', () => openRoom(btn.dataset.room))
+  btn.addEventListener('click', () => scrollToRoom(btn.dataset.room))
 })
+
+function syncRoomFromScroll() {
+  if (!roomScroll) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  if (performance.now() < roomLock) return
+  const span = roomScroll.offsetHeight - window.innerHeight
+  if (span <= 0) return
+  const y = window.scrollY - roomScroll.offsetTop
+  if (y < 0 || y > span) return
+  const id = ROOM_ORDER[Math.min(ROOM_ORDER.length - 1, Math.floor((y / span) * ROOM_ORDER.length))]
+  const current = document.querySelector('#rooms-list .room.on')
+  if (current && current.dataset.room === id) return
+  openRoom(id)
+}
+
+window.addEventListener('scroll', syncRoomFromScroll, { passive: true })
 
 document.querySelectorAll('.tabs .tab').forEach(btn => {
   btn.addEventListener('click', () => {
